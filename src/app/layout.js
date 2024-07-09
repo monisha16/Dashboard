@@ -1,6 +1,7 @@
 import { Inter } from 'next/font/google';
 import './globals.css';
-import Sidebar from '@/components/ui/Sidebar';
+import Sidebar from '@/components/Sidebar';
+import Header from '@/components/Header';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -12,9 +13,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang='en'>
-      <body className={`${inter.className} flex justify-between`}>
+      <body className={`${inter.className} flex items-start justify-between`}>
         <Sidebar />
-        <main className='w-full h-full bg-red-300'>{children}</main>
+        <main
+          className='grid w-full h-full pl-[300px]'
+          style={{ width: 'calc(100%-300px)' }}
+        >
+          <Header />
+          <div className='p-8'>{children}</div>
+        </main>
       </body>
     </html>
   );
